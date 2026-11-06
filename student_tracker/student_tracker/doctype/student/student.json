@@ -15,6 +15,7 @@
   "parent_name",
   "parent_contact_number",
   "photo",
+  "mentor",
   "education_details_section",
   "school_name",
   "school_class",
@@ -91,6 +92,16 @@
    "fieldtype": "Attach Image",
    "hidden": 1,
    "label": "Photo"
+  },
+  {
+   "fieldname": "mentor",
+   "fieldtype": "Link",
+   "label": "Mentor",
+   "options": "User",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "search_index": 1,
+   "description": "User with the Mentor role who looks after this student"
   }
  ],
  "grid_page_length": 50,
@@ -98,7 +109,7 @@
  "index_web_pages_for_search": 1,
  "links": [],
  "make_attachments_public": 1,
- "modified": "2026-11-06 08:44:27.680021",
+ "modified": "2026-11-06 12:00:00.000000",
  "modified_by": "Administrator",
  "module": "Student Tracker",
  "name": "Student",
@@ -116,6 +127,11 @@
    "role": "System Manager",
    "share": 1,
    "write": 1
+  },
+  {
+   "read": 1,
+   "report": 1,
+   "role": "Mentor"
   }
  ],
  "row_format": "Dynamic",

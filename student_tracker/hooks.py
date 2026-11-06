@@ -277,3 +277,27 @@ app_license = "mit"
 # List of apps whose translatable strings should be excluded from this app's translations.
 # ignore_translatable_strings_from = []
 
+
+# Mentor portal
+# -------------
+# Vue + frappe-ui single page app built from ../frontend into public/frontend,
+# served at /mentor (www/mentor.html).
+
+fixtures = [{"dt": "Role", "filters": [["name", "=", "Mentor"]]}]
+
+# Send Mentors to their portal after login
+role_home_page = {"Mentor": "mentor"}
+
+website_route_rules = [
+	{"from_route": "/mentor/<path:app_path>", "to_route": "mentor"},
+]
+
+permission_query_conditions = {
+	"Student": "student_tracker.permissions.student_query_conditions",
+	"Activity Record": "student_tracker.permissions.activity_record_query_conditions",
+}
+
+has_permission = {
+	"Student": "student_tracker.permissions.has_student_permission",
+	"Activity Record": "student_tracker.permissions.has_activity_record_permission",
+}
