@@ -9,6 +9,7 @@
   "student",
   "column_break_dbjh",
   "student_name",
+  "mentor",
   "section_break_fdhs",
   "activity_date",
   "activity_note"
@@ -18,12 +19,17 @@
    "fieldname": "student",
    "fieldtype": "Link",
    "label": "Student",
-   "options": "Student"
+   "options": "Student",
+   "reqd": 1,
+   "in_list_view": 1
   },
   {
    "fieldname": "activity_date",
    "fieldtype": "Date",
-   "label": "Activity Date"
+   "label": "Activity Date",
+   "reqd": 1,
+   "in_list_view": 1,
+   "default": "Today"
   },
   {
    "fieldname": "activity_note",
@@ -43,12 +49,21 @@
   {
    "fieldname": "section_break_fdhs",
    "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "mentor",
+   "fieldtype": "Link",
+   "label": "Mentor",
+   "options": "User",
+   "fetch_from": "student.mentor",
+   "read_only": 1,
+   "search_index": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-11-06 08:49:18.488770",
+ "modified": "2026-11-06 12:00:00.000000",
  "modified_by": "Administrator",
  "module": "Student Tracker",
  "name": "Activity Record",
@@ -65,6 +80,13 @@
    "role": "System Manager",
    "share": 1,
    "write": 1
+  },
+  {
+   "create": 1,
+   "read": 1,
+   "write": 1,
+   "report": 1,
+   "role": "Mentor"
   }
  ],
  "row_format": "Dynamic",

@@ -1,0 +1,9 @@
+@import 'frappe-ui/style.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.activity-note p + p {
+  margin-top: 0.5rem;
+}
