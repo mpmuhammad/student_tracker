@@ -1,0 +1,126 @@
+{
+ "actions": [],
+ "allow_bulk_edit": 1,
+ "allow_rename": 1,
+ "autoname": "TDR-ST-.YY.-.####",
+ "creation": "2026-11-06 08:33:14.557494",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "personal_details_section",
+  "name1",
+  "house_name",
+  "phone_number",
+  "column_break_kfvh",
+  "parent_name",
+  "parent_contact_number",
+  "photo",
+  "education_details_section",
+  "school_name",
+  "school_class",
+  "column_break_marn",
+  "madrassa_name",
+  "madrassa_class"
+ ],
+ "fields": [
+  {
+   "fieldname": "personal_details_section",
+   "fieldtype": "Section Break",
+   "label": "Personal Details"
+  },
+  {
+   "fieldname": "name1",
+   "fieldtype": "Data",
+   "label": "Name"
+  },
+  {
+   "fieldname": "house_name",
+   "fieldtype": "Data",
+   "label": "House Name"
+  },
+  {
+   "fieldname": "parent_name",
+   "fieldtype": "Data",
+   "label": "Parent Name"
+  },
+  {
+   "fieldname": "phone_number",
+   "fieldtype": "Data",
+   "label": "Phone Number"
+  },
+  {
+   "fieldname": "parent_contact_number",
+   "fieldtype": "Data",
+   "label": "Parent Contact Number"
+  },
+  {
+   "fieldname": "column_break_kfvh",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "education_details_section",
+   "fieldtype": "Section Break",
+   "label": "Education Details"
+  },
+  {
+   "fieldname": "school_name",
+   "fieldtype": "Data",
+   "label": "School Name"
+  },
+  {
+   "fieldname": "madrassa_name",
+   "fieldtype": "Data",
+   "label": "Madrassa Name"
+  },
+  {
+   "fieldname": "madrassa_class",
+   "fieldtype": "Data",
+   "label": "Madrassa Class "
+  },
+  {
+   "fieldname": "school_class",
+   "fieldtype": "Data",
+   "label": "School Class"
+  },
+  {
+   "fieldname": "column_break_marn",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "photo",
+   "fieldtype": "Attach Image",
+   "hidden": 1,
+   "label": "Photo"
+  }
+ ],
+ "grid_page_length": 50,
+ "image_field": "photo",
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "make_attachments_public": 1,
+ "modified": "2026-11-06 08:44:27.680021",
+ "modified_by": "Administrator",
+ "module": "Student Tracker",
+ "name": "Student",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}
