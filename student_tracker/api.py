@@ -29,7 +29,7 @@ def _ensure_mentor():
 	if frappe.session.user == "Guest":
 		raise frappe.AuthenticationError(_("Please log in"))
 	roles = frappe.get_roles()
-	if MENTOR_ROLE not in roles and "System Manager" not in roles:
+	if MENTOR_ROLE not in roles:
 		frappe.throw(_("Only users with the Mentor role can use this page"), frappe.PermissionError)
 
 
@@ -56,7 +56,7 @@ def get_session_info() -> dict:
 		"user": user,
 		"full_name": full_name or user,
 		"user_image": user_image,
-		"is_mentor": MENTOR_ROLE in roles or "System Manager" in roles,
+		"is_mentor": MENTOR_ROLE in roles,
 	}
 
 

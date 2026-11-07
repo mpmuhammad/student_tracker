@@ -36,5 +36,5 @@ export async function login(email, password) {
 
 export async function logout() {
   await call('logout')
-  window.location.href = '/mentor/login'
+  window.location.href = '/login'
 }
