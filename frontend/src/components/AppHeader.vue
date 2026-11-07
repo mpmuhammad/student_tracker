@@ -3,7 +3,7 @@
     <div class="mx-auto flex h-14 max-w-6xl items-center justify-between px-4">
       <router-link to="/" class="flex items-center gap-2">
         <span class="lucide-graduation-cap size-5 text-ink-gray-7" />
-        <span class="text-base font-semibold">Student Tracker</span>
+        <span class="text-base font-semibold">Edu Cell</span>
         <Badge label="Mentor" theme="blue" variant="subtle" />
       </router-link>
       <div class="flex items-center gap-3">
