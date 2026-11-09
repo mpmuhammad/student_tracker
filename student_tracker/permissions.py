@@ -47,3 +47,28 @@ def has_activity_record_permission(doc, ptype=None, user=None) -> bool | None:
 		# new, not yet linked record; the student check runs on save
 		return ptype == "create"
 	return frappe.db.get_value("Student", doc.student, "mentor") == user
+
+def goal_query_conditions(user: str | None = None) -> str:
+    """Restrict mentors to goals belonging to their assigned students."""
+    user = user or frappe.session.user
+
+    if not is_restricted_mentor(user):
+        return ""
+
+    return (
+        "`tabGoal`.`student` in "
+        f"(select `name` from `tabStudent` where `mentor` = {frappe.db.escape(user)})"
+    )
+
+
+def has_goal_permission(doc, ptype=None, user=None) -> bool | None:
+    """Allow mentors to access goals only for their assigned students."""
+    user = user or frappe.session.user
+
+    if not is_restricted_mentor(user):
+        return None
+
+    if not doc.student:
+        return False
+
+    return frappe.db.get_value("Student", doc.student, "mentor") == user

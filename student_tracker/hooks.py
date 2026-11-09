@@ -295,9 +295,11 @@ website_route_rules = [
 permission_query_conditions = {
 	"Student": "student_tracker.permissions.student_query_conditions",
 	"Activity Record": "student_tracker.permissions.activity_record_query_conditions",
+	"Goal": "student_tracker.permissions.goal_query_conditions",	
 }
 
 has_permission = {
 	"Student": "student_tracker.permissions.has_student_permission",
 	"Activity Record": "student_tracker.permissions.has_activity_record_permission",
+	"Goal": "student_tracker.permissions.has_goal_permission",
 }
