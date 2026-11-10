@@ -340,12 +340,13 @@
 
               <!-- Goal actions -->
               <!-- Completed: show both buttons side by side -->
+
               <div
                 v-if="isGoalCompleted(goal.data)"
-                class="flex flex-col gap-2 sm:flex-row"
+                class="flex w-full flex-col gap-2 sm:flex-row"
               >
                 <Button
-                  class="flex-1"
+                  class="w-full sm:flex-1"
                   variant="solid"
                   icon-left="lucide-plus"
                   label="Set New Goal"
@@ -353,7 +354,7 @@
                 />
 
                 <Button
-                  class="flex-1"
+                  class="w-full sm:flex-1"
                   variant="subtle"
                   icon-left="lucide-history"
                   label="View Goal History"
