@@ -1,4 +1,3 @@
-
 <template>
   <Dialog
     v-model:open="open"
@@ -10,6 +9,12 @@
       class="flex flex-col gap-4"
       @submit.prevent="submit"
     >
+      <Select
+        v-model="goalTerm"
+        label="Goal term"
+        :options="goalTermOptions"
+      />
+
       <Textarea
         v-model="taskDescription"
         label="Task description"
@@ -45,7 +50,14 @@
 
 <script setup>
 import { ref, watch } from 'vue'
-import { Button, Dialog, Textarea, call, toast } from 'frappe-ui'
+import {
+  Button,
+  Dialog,
+  Select,
+  Textarea,
+  call,
+  toast,
+} from 'frappe-ui'
 
 const props = defineProps({
   student: {
@@ -61,13 +73,20 @@ const open = defineModel('open', {
   default: false,
 })
 
+const goalTermOptions = [
+  { label: 'Short Term', value: 'Short Term' },
+  { label: 'Long Term', value: 'Long Term' },
+]
+
 const taskDescription = ref('')
+const goalTerm = ref('Short Term')
 const saving = ref(false)
 const error = ref('')
 
 watch(open, (isOpen) => {
   if (isOpen) {
     taskDescription.value = ''
+    goalTerm.value = 'Short Term'
     error.value = ''
   }
 })
@@ -92,6 +111,7 @@ async function submit() {
     const doc = await call('student_tracker.api.create_goal', {
       student: props.student.name,
       task_description: description,
+      goal_term: goalTerm.value,
     })
 
     toast.success('Goal saved')
