@@ -1,4 +1,3 @@
-
 {
   "doctype": "DocType",
   "name": "Goal",
@@ -9,6 +8,7 @@
   "field_order": [
     "student",
     "task_description",
+    "goal_term",
     "status",
     "actual_percentage",
     "created_on",
@@ -29,6 +29,15 @@
       "fieldtype": "Small Text",
       "label": "Task Description",
       "reqd": 1
+    },
+    {
+      "fieldname": "goal_term",
+      "fieldtype": "Select",
+      "label": "Goal Term",
+      "options": "Short Term\nLong Term",
+      "default": "Short Term",
+      "reqd": 1,
+      "in_list_view": 1
     },
     {
       "fieldname": "status",
@@ -55,19 +64,19 @@
       "in_list_view": 1
     },
     {
-        "fieldname": "closed_on",
-        "fieldtype": "Datetime",
-        "label": "Closed On",
-        "read_only": 1
+      "fieldname": "closed_on",
+      "fieldtype": "Datetime",
+      "label": "Closed On",
+      "read_only": 1
     },
     {
-    "fieldname": "is_closed",
-    "fieldtype": "Check",
-    "label": "Closed",
-    "default": "0",
-    "read_only": 1,
-    "hidden": 1
-  }
+      "fieldname": "is_closed",
+      "fieldtype": "Check",
+      "label": "Closed",
+      "default": "0",
+      "read_only": 1,
+      "hidden": 1
+    }
   ],
   "permissions": [
     {
