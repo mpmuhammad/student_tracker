@@ -100,7 +100,7 @@ def get_my_students() -> list[dict]:
         "Student",
         filters=filters,
         fields=STUDENT_FIELDS,
-        order_by="name1 asc",
+        order_by="creation desc",
     )
 
     if not students:
@@ -228,6 +228,60 @@ def add_activity(
     }).insert()
 
     return doc.as_dict()
+
+
+
+@frappe.whitelist(methods=["POST"])
+def create_student(
+    name1: str,
+    house_name: str = "",
+    phone_number: str = "",
+    parent_name: str = "",
+    parent_contact_number: str = "",
+    school_name: str = "",
+    school_class: str = "",
+    madrassa_name: str = "",
+    madrassa_class: str = "",
+    photo: str = "",
+) -> dict:
+    """Create a student assigned automatically to the logged-in mentor."""
+
+    _ensure_mentor()
+
+    name1 = (name1 or "").strip()
+    photo = (photo or "").strip()
+
+    if not name1:
+        frappe.throw(_("Student name is required"))
+
+    # Verify that the supplied photo belongs to an uploaded File record.
+    if photo and not frappe.db.exists("File", {"file_url": photo}):
+        frappe.throw(_("Invalid student photo"))
+
+    doc = frappe.get_doc({
+        "doctype": "Student",
+        "name1": name1,
+        "house_name": (house_name or "").strip(),
+        "phone_number": (phone_number or "").strip(),
+        "parent_name": (parent_name or "").strip(),
+        "parent_contact_number": (parent_contact_number or "").strip(),
+        "school_name": (school_name or "").strip(),
+        "school_class": (school_class or "").strip(),
+        "madrassa_name": (madrassa_name or "").strip(),
+        "madrassa_class": (madrassa_class or "").strip(),
+        "photo": photo,
+
+        # Always assign the currently logged-in mentor.
+        "mentor": frappe.session.user,
+    })
+
+    # Mentor users have read-only DocType permissions.
+    # Ownership is enforced above, so insertion is performed
+    # through this restricted, validated endpoint.
+    doc.insert(ignore_permissions=True)
+
+    return doc.as_dict()
+
 
 
 @frappe.whitelist()

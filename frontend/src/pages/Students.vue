@@ -21,24 +21,34 @@
         </p>
       </div>
 
-      <div class="flex gap-2 sm:w-80">
-        <TextInput
-          v-model="search"
-          class="flex-1"
-          placeholder="Search name, ID, school…"
-          :debounce="150"
-        >
-          <template #prefix>
-            <span class="lucide-search size-4 text-ink-gray-5" />
-          </template>
-        </TextInput>
-
+      <div class="flex flex-col gap-2 sm:flex-row">
         <Button
-          icon="lucide-refresh-cw"
-          tooltip="Reload"
-          :loading="students.loading"
-          @click="students.reload()"
+          variant="solid"
+          icon-left="lucide-user-plus"
+          label="Add Student"
+          class="w-full sm:w-auto"
+          @click="showStudentDialog = true"
         />
+
+        <div class="flex gap-2 sm:w-80">
+          <TextInput
+            v-model="search"
+            class="flex-1"
+            placeholder="Search name, ID, school…"
+            :debounce="150"
+          >
+            <template #prefix>
+              <span class="lucide-search size-4 text-ink-gray-5" />
+            </template>
+          </TextInput>
+
+          <Button
+            icon="lucide-refresh-cw"
+            tooltip="Reload"
+            :loading="students.loading"
+            @click="students.reload()"
+          />
+        </div>
       </div>
     </div>
 
@@ -74,8 +84,7 @@
       </p>
 
       <p class="mt-1 text-sm text-ink-gray-5">
-        An administrator can assign students to you by setting the
-        <b>Mentor</b> field on the Student record.
+        You can add a student using the Add Student button above.
       </p>
     </div>
 
@@ -332,6 +341,12 @@
       </p>
     </div>
 
+    <!-- Add Student dialog -->
+    <AddStudentDialog
+      v-model:open="showStudentDialog"
+      @saved="students.reload()"
+    />
+
     <!-- Activity dialog -->
     <AddActivityDialog
       v-model:open="showAdd"
@@ -362,6 +377,7 @@ import {
 import StudentPhoto from '../components/StudentPhoto.vue'
 import AddActivityDialog from '../components/AddActivityDialog.vue'
 import AddGoalDialog from '../components/AddGoalDialog.vue'
+import AddStudentDialog from '../components/AddStudentDialog.vue'
 import NotMentor from '../components/NotMentor.vue'
 import { session } from '../session'
 
@@ -395,6 +411,9 @@ const filtered = computed(() => {
       .some((v) => String(v).toLowerCase().includes(q)),
   )
 })
+
+// Add Student dialog
+const showStudentDialog = ref(false)
 
 // Activity dialog
 const showAdd = ref(false)
