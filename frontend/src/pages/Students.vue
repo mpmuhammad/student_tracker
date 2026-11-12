@@ -360,6 +360,25 @@
       :student="selectedGoalStudent"
       @saved="students.reload()"
     />
+        <!-- Footer -->
+    <footer
+      class="mt-10 flex flex-col items-center justify-between gap-2 border-t border-outline-gray-2 py-5 text-xs text-ink-gray-5 sm:flex-row"
+    >
+      <p>
+        © 2026 Edu Cell. All rights reserved.
+      </p>
+
+      <p>
+        <a
+          href="https://zoul.one"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="font-medium text-ink-gray-7 hover:text-ink-gray-9 hover:underline"
+        >
+          Zoul Technologies Pvt Ltd
+        </a>
+      </p>
+    </footer>
   </main>
 </template>
 
